@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RSX2K</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui}
+body{background:#050816;color:#fff;padding-bottom:20px}
+.top{position:sticky;top:0;background:#050816;padding:12px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #222}
+.logo{font-size:22px;font-weight:900}.logo span{color:#22c55e}
+.para button{padding:8px 10px;border-radius:99px;border:1px solid #333;background:#0f172a;color:#fff;font-weight:700}
+.para button.aktif{background:#22c55e;color:#000}
+.hero{text-align:center;padding:22px 12px}.hero h1{font-size:30px}.hero h1 span{color:#22c55e}.hero p{color:#94a3b8;font-size:13px;margin-top:6px}
+.bar{background:#22c55e;color:#000;font-weight:800;padding:8px;font-size:13px;text-align:center}
+.stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:12px}
+.stats div{background:#111827;border:1px solid #222;border-radius:12px;padding:10px;text-align:center}
+.stats b{color:#22c55e;font-size:17px;display:block}.stats small{color:#94a3b8;font-size:11px}
+.box{background:#0f172a;margin:12px;border-radius:14px;padding:12px;border:1px solid #222}
+.tabs{display:flex;gap:6px;overflow:auto;padding:10px}
+.tabs button{background:#111827;border:1px solid #333;color:#fff;padding:9px 14px;border-radius:99px;font-weight:700;white-space:nowrap}
+.tabs button.aktif{background:#22c55e;color:#000}
+.servis{display:flex;justify-content:space-between;align-items:center;background:#050816;border:1px solid #222;border-radius:10px;padding:10px;margin:7px 0}
+.servis.aktif{border:2px solid #22c55e}.servis small{color:#94a3b8;display:block}
+.fiyat{color:#22c55e;font-weight:900;text-align:right}
+input{width:100%;padding:11px;background:#050816;border:1px solid #333;border-radius:9px;color:#fff;margin:5px 0}
+.btn{display:block;text-align:center;background:#22c55e;color:#000;padding:13px;border-radius:11px;font-weight:900;margin-top:9px;border:0;width:100%}
+.btn2{background:#1e293b;color:#fff;border:1px solid #333}
+.pay{border:1px solid #333;border-radius:9px;padding:10px;margin:5px 0;display:flex;justify-content:space-between}
+.pay.aktif{border-color:#22c55e;background:#14532d33}.pay small{color:#94a3b8;display:block}
+.kart{background:#050816;border:1px solid #222;border-radius:9px;padding:9px;margin:7px 0;font-size:13px}
+.atab{display:flex;gap:6px;overflow:auto;margin:8px 0}
+.atab button{background:#1e293b;border:1px solid #333;color:#fff;padding:8px 12px;border-radius:99px;font-weight:700;white-space:nowrap}
+.atab button.aktif{background:#22c55e;color:#000}
+.kucuk{padding:6px 9px;border-radius:99px;border:0;font-weight:800;font-size:12px}
+</style>
+</head>
+<body>
+<div class="top"><div class="logo">RSX<span>2K</span></div><div class="para"><button id="bIQD" class="aktif" onclick="setPara('IQD')">IQD</button><button id="bTRY" onclick="setPara('TRY')">TRY</button><button id="bUSD" onclick="setPara('USD')">USD</button></div></div>
+<div class="hero"><h1>Sosyal Medyada<br><span>Patlama Zamanı</span> 🚀</h1><p>RSX2K - En Ucuz SMM Paneli</p></div>
+<div class="bar">🔥 RSX2K10 İLE %10 İNDİRİM • 1000 Takipçi 2.200 IQD / 63.80 TRY 🔥</div>
+<div class="stats"><div><b id="statSip">0</b><small>Sipariş</small></div><div><b>0-5 dk</b><small>Başlama</small></div><div><b>30 Gün</b><small>Garanti</small></div></div>
+<div class="box" style="background:#22c55e;color:#000;display:flex;justify-content:space-between;align-items:center"><div><small>BAKİYEN</small><b id="bakiyeTxt" style="font-size:20px;display:block">0 IQD</b></div><button onclick="bakiyeYukle()" style="background:#000;color:#fff;border:0;padding:9px 13px;border-radius:99px;font-weight:900">+ Yükle</button></div>
+<div class="tabs"><button class="aktif" onclick="katSec('Instagram',this)">📸 Instagram</button><button onclick="katSec('TikTok',this)">🎵 TikTok</button><button onclick="katSec('YouTube',this)">▶️ YouTube</button><button onclick="katSec('Facebook',this)">👍 Facebook</button><button onclick="katSec('Telegram',this)">✈️ Telegram</button></div>
+<div class="box"><h3>🔥 Servisler - <span id="katAd">Instagram</span></h3>
+<div id="kat-Instagram">
+<div class="servis aktif" onclick="sec(this,2200,1000,'Instagram Takipci - Garantili')"><div><b>Instagram Takipci - Garantili ⭐</b><small>0-10 dk</small></div><div class="fiyat" data-iqd="2200" data-birim="1000">2.200 IQD<br><small style="color:#fff">/1000</small></div></div>
+<div class="servis" onclick="sec(this,1500,1000,'Instagram Takipci - Ekonomik')"><div><b>Instagram Takipci - Ekonomik</b><small>En Ucuz</small></div><div class="fiyat" data-iqd="1500" data-birim="1000">1.500 IQD<br><small style="color:#fff">/1000</small></div></div>
+<div class="servis" onclick="sec(this,600,1000,'Instagram Begeni')"><div><b>Instagram Begeni</b><small>Anında</small></div><div class="fiyat" data-iqd="600" data-birim="1000">600 IQD<br><small style="color:#fff">/1000</small></div></div>
+<div class="servis" onclick="sec(this,300,1000,'Instagram Izlenme')"><div><b>Instagram Izlenme - Reels</b><small>Keşfet</small></div><div class="fiyat" data-iqd="300" data-birim="1000">300 IQD<br><small style="color:#fff">/1000</small></div></div>
+</div>
+<div id="kat-TikTok" style="display:none">
+<div class="servis" onclick="sec(this,1800,1000,'TikTok Takipci')"><div><b>TikTok Takipci</b><small>0-15 dk</small></div><div class="fiyat" data-iqd="1800" data-birim="1000">1.800 IQD<br><small style="color:#fff">/1000</small></div></div>
+<div class="servis" onclick="sec(this,500,1000,'TikTok Begeni')"><div><b>TikTok Begeni</b><small>Anında</small></div><div class="fiyat" data-iqd="500" data-birim="1000">500 IQD<br><small style="color:#fff">/1000</small></div></div>
+<div class="servis" onclick="sec(this,150,1000,'TikTok Izlenme')"><div><b>TikTok Izlenme</b><small>Keşfet</small></div><div class="fiyat" data-iqd="150" data-birim="1000">150 IQD<br><small style="color:#fff">/1000</small></div></div>
+</div>
+<div id="kat-YouTube" style="display:none">
+<div class="servis" onclick="sec(this,5000,1000,'YouTube Abone')"><div><b>YouTube Abone</b><small>Kalıcı</small></div><div class="fiyat" data-iqd="5000" data-birim="1000">5.000 IQD<br><small style="color:#fff">/1000</small></div></div>
+<div class="servis" onclick="sec(this,3000,1000,'YouTube Izlenme')"><div><b>YouTube Izlenme</b><small>Para Kazanma</small></div><div class="fiyat" data-iqd="3000" data-birim="1000">3.000 IQD<br><small style="color:#fff">/1000</small></div></div>
+</div>
+<div id="kat-Facebook" style="display:none">
+<div class="servis" onclick="sec(this,2000,1000,'Facebook Begeni')"><div><b>Facebook Sayfa Begeni</b><small>Gerçek</small></div><div class="fiyat" data-iqd="2000" data-birim="1000">2.000 IQD<br><small style="color:#fff">/1000</small></div></div>
+<div class="servis" onclick="sec(this,2200,1000,'Facebook Takipci')"><div><b>Facebook Takipci</b><small>Hızlı</small></div><div class="fiyat" data-iqd="2200" data-birim="1000">2.200 IQD<br><small style="color:#fff">/1000</small></div></div>
+</div>
+<div id="kat-Telegram" style="display:none">
+<div class="servis" onclick="sec(this,1500,1000,'Telegram Uye')"><div><b>Telegram Uye - Kanal</b><small>Gerçek Üye</small></div><div class="fiyat" data-iqd="1500" data-birim="1000">1.500 IQD<br><small style="color:#fff">/1000</small></div></div>
+</div>
+</div>
+<div class="box"><h3>🛒 Sipariş Ver</h3>
+<input id="secAd" readonly value="Instagram Takipci - Garantili">
+<input id="linkInput" placeholder="Link / @kullanici">
+<input id="adetInput" type="number" value="1000" oninput="hesapla()">
+<p id="birimYazi" style="color:#94a3b8;font-size:12px">1000 adet = 2.200 IQD</p>
+<input id="kuponInput" placeholder="Kupon: RSX2K10">
+<button class="btn btn2" onclick="kuponUygula()">Kupon Uygula</button>
+<div style="display:flex;justify-content:space-between;margin:10px 0"><span>Toplam:</span><b id="toplamTxt" style="color:#22c55e;font-size:20px">2.200 IQD</b></div>
+<p id="indirimYazi" style="color:#f59e0b;font-size:12px;display:none">✅ %10 İndirim Uygulandı!</p>
+<h3>Ödeme</h3>
+<div class="pay aktif" onclick="paySec(this,'Kart')"><div><b>💳 Kart - Stripe</b><small>Mastercard • Visa • Troy</small></div><span>💳</span></div>
+<div class="pay" onclick="paySec(this,'Papara')"><div><b>🟣 Papara</b><small>WhatsApp ile</small></div><span>🟣</span></div>
+<div class="pay" onclick="paySec(this,'Havale')"><div><b>🏦 Havale / EFT</b><small>WhatsApp ile</small></div><span>🏦</span></div>
+<div class="pay" onclick="paySec(this,'Zain Cash')"><div><b>📱 Zain Cash</b><small>WhatsApp ile</small></div><span>📱</span></div>
+<button class="btn" onclick="siparisVer()">🚀 Siparişi Başlat</button>
+<a class="btn btn2" href="https://wa.me/9647512044863">💬 WhatsApp ile Sipariş Ver</a>
+</div>
+<div class="box"><h3>🔍 Sipariş Takip</h3><input id="takipInput" placeholder="Kod: RSX-1234"><button class="btn btn2" onclick="takipEt()">Sorgula</button><p id="takipSonuc" style="color:#94a3b8;font-size:13px;margin-top:6px"></p></div>
+<div class="box"><h3>📦 Siparişlerim</h3><div id="sipList"><p style="color:#94a3b8">Henüz sipariş yok.</p></div></div>
+<div class="box" style="text-align:center"><a class="btn" href="https://wa.me/9647512044863">💬 WhatsApp Destek - 0751 204 4863</a><p style="color:#64748b;font-size:11px;margin-top:8px">© 2026 RSX2K - Musul / Irak</p></div>
+<div style="padding:0 12px"><button onclick="document.getElementById('admin').style.display='block';window.scrollTo(0,0)" style="background:#111827;color:#fff;border:1px solid #444;padding:14px;border-radius:99px;font-weight:900;width:100%">👑 Yönetici Paneli</button></div>
+<div id="admin" style="display:none;position:fixed;inset:0;background:#050816;z-index:999;overflow:auto;padding:14px">
+<div style="display:flex;justify-content:space-between;align-items:center"><h2>👑 ADMIN</h2><button onclick="document.getElementById('admin').style.display='none'" style="background:red;color:#fff;border:0;padding:8px 14px;border-radius:99px;font-weight:900">X Kapat</button></div>
+<div id="adminLogin"><input id="sifreInput" type="password" placeholder="Şifre"><button class="btn" onclick="adminGiris()">Giriş Yap</button></div>
+<div id="adminPanel" style="display:none">
+<div class="stats"><div><b id="aSip">0</b><small>Sipariş</small></div><div><b id="aCiro">0 IQD</b><small>Ciro</small></div><div><b id="aBakiye">0 IQD</b><small>Bakiye</small></div></div>
+<div class="atab"><button class="aktif" onclick="atabSec('sip',this)">📦 Siparişler</button><button onclick="atabSec('fiyat',this)">💰 Fiyatlar</button><button onclick="atabSec('bakiye',this)">💳 Bakiye</button><button onclick="atabSec('kupon',this)">🎟️ Kupon</button></div>
+<div id="tab-sip" class="box"><h3>📦 Sipariş Yönetimi</h3><input id="araInput" placeholder="Kod ara" oninput="adminGoster()"><div id="adminSip"></div><button class="btn btn2" onclick="tumunuTemizle()">Tümünü Temizle</button></div>
+<div id="tab-fiyat" class="box" style="display:none"><h3>💰 Fiyatlar</h3><div id="adminFiyat"></div><button class="btn" onclick="fiyatKaydet()">💾 Kaydet</button></div>
+<div id="tab-bakiye" class="box" style="display:none"><h3>💳 Bakiye</h3><p>Bakiye: <b id="adminBakiye">0 IQD</b></p><input id="bakiyeMiktar" type="number" placeholder="10000"><button class="btn" onclick="bakiyeEkle()">+ Ekle</button><button class="btn btn2" onclick="bakiyeSifirla()">Sıfırla</button></div>
+<div id="tab-kupon" class="box" style="display:none"><h3>🎟️ Kupon</h3><p>Mevcut: <b id="kuponGoster">RSX2K10 - %10</b></p><input id="yeniKod" placeholder="Yeni Kod"><input id="yeniYuzde" type="number" placeholder="20"><button class="btn" onclick="kuponKaydet()">Kaydet</button></div>
+</div>
+</div>
+<script>
+var BACKEND="https://rsx2k-backend.vercel.app";
+var PARA="IQD",FIYAT=2200,BIRIM=1000,PAY="Kart",IND=false,KOD="RSX2K10",YUZDE=10;
+function cv(x){if(PARA=="TRY")return (x*0.029).toFixed(2)+" TRY";if(PARA=="USD")return (x*0.00076).toFixed(2)+" USD";return Math.round(x).toLocaleString("tr-TR")+" IQD";}
+function setPara(p){PARA=p;document.getElementById("bIQD").className=p=="IQD"?"aktif":"";document.getElementById("bTRY").className=p=="TRY"?"aktif":"";document.getElementById("bUSD").className=p=="USD"?"aktif":"";var e=document.querySelectorAll(".fiyat");for(var i=0;i<e.length;i++){e[i].innerHTML=cv(parseInt(e[i].getAttribute("data-iqd")))+"<br><small style='color:#fff'>/"+e[i].getAttribute("data-birim")+"</small>";}hesapla();bakiyeGoster();}
+function katSec(k,b){document.getElementById("katAd").innerText=k;var t=document.querySelectorAll(".tabs button");for(var i=0;i<t.length;i++)t[i].classList.remove("aktif");b.classList.add("aktif");var a=["Instagram","TikTok","YouTube","Facebook","Telegram"];for(var j=0;j<a.length;j++)document.getElementById("kat-"+a[j]).style.display=a[j]==k?"block":"none";var ilk=document.querySelector("#kat-"+k+" .servis");if(ilk)ilk.click();}
+function sec(el,f,b,ad){var s=document.querySelectorAll(".servis");for(var i=0;i<s.length;i++)s[i].classList.remove("aktif");el.classList.add("aktif");FIYAT=f;BIRIM=b;document.getElementById("secAd").value=ad;hesapla();}
+function hesapla(){var a=parseFloat(document.getElementById("adetInput").value)||0;var t=a*(FIYAT/BIRIM);if(IND)t=t*(1-YUZDE/100);document.getElementById("toplamTxt").innerText=cv(t);document.getElementById("birimYazi").innerText=a+" adet = "+cv(t);return t;}
+function kuponUygula(){if(document.getElementById("kuponInput").value.toUpperCase().trim()==KOD){IND=true;document.getElementById("indirimYazi").style.display="block";hesapla();alert("Kupon uygulandı!");}else alert("Kupon geçersiz");}
+function paySec(el,n){var p=document.querySelectorAll(".pay");for(var i=0;i<p.length;i++)p[i].classList.remove("aktif");el.classList.add("aktif");PAY=n;}
+function okuBakiye(){try{return parseInt(localStorage.getItem("rsx_bakiye")||"0");}catch(e){return 0;}}
+function yazBakiye(v){try{localStorage.setItem("rsx_bakiye",String(v));}catch(e){}}
+function bakiyeGoster(){var b=okuBakiye();document.getElementById("bakiyeTxt").innerText=cv(b);var a=document.getElementById("adminBakiye");if(a)a.innerText=cv(b);return b;}
+function stripeAc(t,ad){var tutar=t,cur="iqd";if(PARA=="TRY"){tutar=Math.round(t*0.029*100)/100;cur="try";}if(PARA=="USD"){tutar=Math.round(t*0.00076*100)/100;cur="usd";}if(PARA=="IQD")tutar=Math.round(t);fetch(BACKEND+"/create-checkout-session",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({amount:tutar,currency:cur,name:ad})}).then(function(r){return r.json();}).then(function(d){if(d.url)window.location.href=d.url;else alert("Stripe hatası: "+(d.error||"Backend cevap vermedi"));}).catch(function(){alert("Stripe bağlanamadı");});}
+function bakiyeYukle(){var m=prompt("Ne kadar bakiye yüklemek istiyorsun? Örn: 10000\nKart ile Stripe ödeme sayfasına gideceksin.");if(!m)return;var t=parseInt(m);if(!t||t<=0)return;stripeAc(t,"Bakiye Yükle - "+t+" IQD");}
+function okuSip(){try{return JSON.parse(localStorage.getItem("rsx_sip")||"[]");}catch(e){return [];}}
+function yazSip(a){try{localStorage.setItem("rsx_sip",JSON.stringify(a));}catch(e){}}
+function siparisVer(){var l=document.getElementById("linkInput").value.trim();if(!l){alert("Link yaz");return;}var t=hesapla();var a=document.getElementById("adetInput").value;var s=document.getElementById("secAd").value;var kod="RSX-"+Math.floor(1000+Math.random()*9000);var arr=okuSip();arr.unshift({s:s,l:l,a:a,t:Math.round(t),p:PAY,kod:kod,d:new Date().toLocaleString(),durum:PAY=="Kart"?"Ödeme Bekliyor":"Bekliyor"});yazSip(arr);goster();if(PAY=="Kart")stripeAc(t,s+" - "+a+" adet - "+kod);else window.open("https://wa.me/9647512044863?text="+encodeURIComponent("Siparis "+kod+" "+s+" "+l+" "+a+" adet "+cv(t)+" Odeme: "+PAY),"_blank");}
+function goster(){var arr=okuSip();document.getElementById("statSip").innerText=arr.length;if(!arr.length){document.getElementById("sipList").innerHTML="<p style='color:#94a3b8'>Henüz sipariş yok.</p>";return;}var h="";for(var i=0;i<arr.length;i++){var o=arr[i];h+="<div class='kart'><b>"+o.s+"</b><br>"+o.l+" - "+o.a+" adet - "+cv(o.t)+"<br>Kod: "+o.kod+" - "+o.durum+"</div>";}document.getElementById("sipList").innerHTML=h;}
+function takipEt(){var k=document.getElementById("takipInput").value.trim().toUpperCase();var arr=okuSip();var f=null;for(var i=0;i<arr.length;i++){if(arr[i].kod==k){f=arr[i];break;}}document.getElementById("takipSonuc").innerText=f?("✅ "+f.s+" - "+f.durum):"❌ Bulunamadı, WhatsApp yaz";}
+function adminGiris(){if(document.getElementById("sifreInput").value.trim()=="Rsx2k@Musul2026"){document.getElementById("adminLogin").style.display="none";document.getElementById("adminPanel").style.display="block";adminGoster();}else alert("Şifre yanlış");}
+function atabSec(t,b){var a=document.querySelectorAll(".atab button");for(var i=0;i<a.length;i++)a[i].classList.remove("aktif");b.classList.add("aktif");var s=["sip","fiyat","bakiye","kupon"];for(var j=0;j<s.length;j++)document.getElementById("tab-"+s[j]).style.display=s[j]==t?"block":"none";if(t=="fiyat"){var h="";var v=document.querySelectorAll(".servis");for(var k=0;k<v.length;k++){var ad=v[k].querySelector("b").innerText;var f=v[k].querySelector(".fiyat").getAttribute("data-iqd");h+="<div style='display:flex;justify-content:space-between;padding:8px;border:1px solid #222;border-radius:8px;margin:5px 0'><span>"+ad+"</span><input type='number' class='fiyatInput' data-ad='"+ad+"' value='"+f+"' style='width:80px;margin:0;padding:6px'></div>";}document.getElementById("adminFiyat").innerHTML=h;}}
+function adminGoster(){var hepsi=okuSip();var q="";try{q=document.getElementById("araInput").value.toUpperCase();}catch(e){}var filt=[];for(var i=0;i<hepsi.length;i++){if(hepsi[i].kod.indexOf(q)!=-1)filt.push(hepsi[i]);}var tot=0;for(var j=0;j<hepsi.length;j++)tot+=hepsi[j].t;document.getElementById("aSip").innerText=hepsi.length;document.getElementById("aCiro").innerText=cv(tot);document.getElementById("aBakiye").innerText=cv(okuBakiye());var h="";if(!filt.length)h="<p style='color:#94a3b8'>Sipariş yok.</p>";for(var k=0;k<filt.length;k++){var o=filt[k];var idx=-1;for(var m=0;m<hepsi.length;m++){if(hepsi[m].kod==o.kod){idx=m;break;}}h+="<div class='kart'><b>"+o.s+"</b><br>"+o.l+" - "+o.a+" adet - "+cv(o.t)+"<br>Kod: <b>"+o.kod+"</b> - "+o.durum+"<br><button class='kucuk' style='background:#22c55e' onclick='durumDegis("+idx+",\"Onaylandi\")'>Onayla</button> <button class='kucuk' style='background:#f59e0b' onclick='durumDegis("+idx+",\"Tamamlandi\")'>Tamamla</button> <button class='kucuk' style='background:#ef4444;color:#fff' onclick='silSip("+idx+")'>Sil</button></div>";}document.getElementById("adminSip").innerHTML=h;}
+function durumDegis(i,y){var a=okuSip();a[i].durum=y;yazSip(a);goster();adminGoster();alert(y);}
+function silSip(i){var a=okuSip();a.splice(i,1);yazSip(a);goster();adminGoster();}
+function tumunuTemizle(){if(confirm("Hepsi silinsin mi?")){yazSip([]);goster();adminGoster();}}
+function fiyatKaydet(){var ins=document.querySelectorAll(".fiyatInput");for(var i=0;i<ins.length;i++){var ad=ins[i].getAttribute("data-ad");var s=document.querySelectorAll(".servis");for(var j=0;j<s.length;j++){if(s[j].querySelector("b").innerText==ad){s[j].querySelector(".fiyat").setAttribute("data-iqd",ins[i].value);}}}setPara(PARA);alert("Kaydedildi!");}
+function bakiyeEkle(){var m=parseInt(document.getElementById("bakiyeMiktar").value)||0;var y=okuBakiye()+m;yazBakiye(y);bakiyeGoster();adminGoster();alert("Yeni: "+cv(y));}
+function bakiyeSifirla(){yazBakiye(0);bakiyeGoster();adminGoster();}
+function kuponKaydet(){var k=document.getElementById("yeniKod").value.toUpperCase().trim();var y=parseInt(document.getElementById("yeniYuzde").value)||10;if(!k){alert("Kod yaz");return;}KOD=k;YUZDE=y;document.getElementById("kuponGoster").innerText=k+" - %"+y;alert("Kaydedildi: "+k);}
+hesapla();goster();bakiyeGoster();
+</script>
+</body>
+</html>
