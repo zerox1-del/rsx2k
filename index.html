@@ -3,228 +3,367 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RSX2K - Sosyal Medyada Patlama Zamanı</title>
+<title>RSX2K - En Ucuz SMM Paneli</title>
 <style>
 *{box-sizing:border-box}
-body{font-family:sans-serif;background:#0f0f0f;color:#fff;margin:0;padding:15px}
-.top{display:flex;justify-content:space-between;align-items:center;max-width:460px;margin:auto}
-.logo{font-size:24px;font-weight:900}
-.logo span{color:#00e676}
-.card{background:#1c1c1c;padding:18px;border-radius:18px;max-width:460px;margin:15px auto}
-input,select{width:100%;padding:13px;border-radius:12px;border:0;margin-top:10px;background:#2a2a2a;color:#fff;font-size:15px}
-button{width:100%;padding:14px;border-radius:12px;border:0;margin-top:10px;font-weight:800;font-size:16px;cursor:pointer}
-.btn-green{background:#00e676;color:#000}
-.btn-white{background:#fff;color:#000}
-.btn-gray{background:#333;color:#fff}
-.btn-wa{background:#25D366;color:#000}
+body{margin:0;font-family:sans-serif;background:#0b1220;color:#fff;padding-bottom:30px}
+header{position:sticky;top:0;background:#0b1220;display:flex;justify-content:space-between;align-items:center;padding:12px 14px;z-index:10;border-bottom:1px solid #1e293b}
+.logo{font-size:22px;font-weight:900;color:#00e676}
+.cur button{background:#1e293b;color:#fff;border:0;padding:7px 10px;border-radius:20px;font-weight:800;cursor:pointer}
+.cur button.on{background:#00e676;color:#000}
+.wrap{padding:12px;max-width:520px;margin:auto}
+.hero{text-align:center}
+.hero h1{font-size:28px;margin:8px 0 2px}
+.hero h1 span{color:#00e676}
+.hero p{opacity:.7;font-size:13px;margin:0}
+.banner{background:#f97316;color:#000;font-weight:800;padding:10px;border-radius:10px;text-align:center;margin:12px 0;font-size:13px}
+.stats{display:flex;gap:8px}
+.stat{flex:1;background:#111827;border-radius:12px;padding:10px;text-align:center}
+.stat b{font-size:18px}
+.stat small{display:block;opacity:.6;font-size:11px}
+.balance{background:#111827;border-radius:12px;padding:12px;margin:12px 0;display:flex;justify-content:space-between;align-items:center}
+.balance b{font-size:20px}
+.btn-green{background:#00e676;color:#000;border:0;padding:11px 14px;border-radius:10px;font-weight:900;cursor:pointer}
+.btn-dark{background:#000;color:#fff;border:1px solid #333;padding:10px 14px;border-radius:10px;font-weight:800;cursor:pointer}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px}
+.tab{white-space:nowrap;background:#1e293b;color:#fff;border:0;padding:9px 13px;border-radius:20px;cursor:pointer}
+.tab.on{background:#00e676;color:#000;font-weight:900}
+.card{background:#111827;border-radius:14px;padding:13px;margin:10px 0}
+.service{display:flex;justify-content:space-between;align-items:center;padding:11px 10px;background:#0f172a;border:1px solid #1e293b;border-radius:12px;margin:7px 0;cursor:pointer}
+.service.sel{border-color:#00e676;background:#052e1b}
+.service small{display:block;opacity:.6;font-size:11px}
+.service b{color:#00e676;white-space:nowrap}
+input,select{width:100%;padding:13px;border-radius:12px;border:1px solid #1e293b;background:#0f172a;color:#fff;margin-top:9px;font-size:15px}
+.pay{border:1px solid #1e293b;border-radius:12px;padding:11px;margin:7px 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;background:#0f172a}
+.pay.sel{border-color:#00e676;background:#052e1b}
+.dot{width:18px;height:18px;border-radius:50%;background:#334155}
+.pay.sel .dot{background:#a855f7}
+.btn-full{width:100%;padding:14px;border-radius:12px;border:0;font-weight:900;font-size:16px;cursor:pointer;margin-top:10px}
+.wa{background:#00e676;color:#000}
+.wa2{background:#22c55e;color:#000}
+.gray{background:#1e293b;color:#fff}
 .hidden{display:none}
-.small{font-size:13px;opacity:.75;line-height:1.5}
-.badge{background:#00e676;color:#000;padding:5px 10px;border-radius:20px;font-weight:800;font-size:13px}
-.row{display:flex;gap:10px}
-.row button{flex:1}
+.small{font-size:12px;opacity:.7;line-height:1.5}
 .center{text-align:center}
-.wa-float{display:block;text-align:center;background:#25D366;color:#000;padding:13px;border-radius:12px;text-decoration:none;font-weight:800;margin-top:10px}
+.admin-bar{position:fixed;bottom:0;left:0;right:0;background:#000;padding:10px;text-align:center}
+.admin-bar button{background:#facc15;border:0;padding:9px 16px;border-radius:20px;font-weight:900;cursor:pointer}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.85);display:flex;align-items:flex-start;justify-content:center;padding:15px;z-index:99;overflow:auto}
+.modal-box{background:#111827;width:100%;max-width:460px;border-radius:16px;padding:16px;margin-top:20px}
+.adm-tab{padding:8px 10px;border-radius:20px;border:0;background:#1e293b;color:#fff;cursor:pointer}
+.adm-tab.on{background:#facc15;color:#000;font-weight:900}
+.row{display:flex;gap:8px;align-items:center}
+.row input{flex:1}
 </style>
 </head>
 <body>
-
-<div class="top">
-<div class="logo">RSX<span>2K</span> 🔥</div>
-<div id="userTop"></div>
+<header>
+<div class="logo">RSX2K</div>
+<div class="cur">
+<button id="btnIQD" class="on" onclick="setCur('IQD')">IQD</button>
+<button id="btnTRY" onclick="setCur('TRY')">TRY</button>
+<button id="btnUSD" onclick="setCur('USD')">USD</button>
 </div>
-<p class="center small">WhatsApp: +964 751 204 4863</p>
+</header>
 
-<!-- GİRİŞ / KAYIT -->
-<div class="card" id="authCard">
-<h2 class="center">Giriş Yap / Kayıt Ol</h2>
-<input id="authUser" placeholder="Kullanıcı adın">
-<input id="authPass" type="password" placeholder="Şifren">
-<div class="row">
-<button class="btn-green" onclick="login()">Giriş Yap</button>
-<button class="btn-white" onclick="register()">Kayıt Ol</button>
-</div>
-<p class="small center" id="authMsg"></p>
+<div class="wrap">
+<div class="hero">
+<h1>Sosyal Medyada<br><span>Patlama Zamanı 🚀</span></h1>
+<p>RSX2K - En Ucuz SMM Paneli</p>
 </div>
 
-<!-- PANEL -->
-<div class="card hidden" id="panelCard">
-<p>Bakiyen: <span class="badge" id="balanceText">0 TL</span></p>
-<p>Hoşgeldin <b id="helloUser"></b> 👋</p>
-<h3>Sipariş Ver</h3>
-<select id="platform">
-<option value="TikTok Takipçi">TikTok - Takipçi</option>
-<option value="TikTok Beğeni">TikTok - Beğeni</option>
-<option value="TikTok İzlenme">TikTok - İzlenme</option>
-<option value="Instagram Takipçi">Instagram - Takipçi</option>
-<option value="Instagram Beğeni">Instagram - Beğeni</option>
-<option value="Instagram İzlenme">Instagram - İzlenme</option>
-</select>
-<input id="targetUser" placeholder="@hedef kullanıcı adı">
-<input id="amount" type="number" value="100" placeholder="Adet">
-<p>Toplam: <b id="totalText">100 TL</b></p>
-<button class="btn-green" onclick="payWithStripe()">💳 Kart ile Öde (Stripe)</button>
-<button class="btn-wa" onclick="orderWhatsapp()">WhatsApp ile Sipariş</button>
-<button class="btn-gray" onclick="showChangePass()">🔑 Şifre Değiştir</button>
-<button class="btn-gray" onclick="logout()">Çıkış Yap</button>
-<p class="small" id="orderMsg"></p>
+<div class="banner">🔥 RSX2K10 İLE %10 İNDİRİM • 1000 Takipçi 2.200 IQD / 63.80 TRY 🔥</div>
+
+<div class="stats">
+<div class="stat"><b id="statOrder">0</b><small>Sipariş</small></div>
+<div class="stat"><b>0-5 dk</b><small>Başlama</small></div>
+<div class="stat"><b>30 Gün</b><small>Garanti</small></div>
 </div>
 
-<!-- ŞİFRE DEĞİŞTİR - DÜZELTİLDİ -->
-<div class="card hidden" id="passCard">
-<h3 class="center">Şifre Değiştir</h3>
-<input id="oldPass" type="password" placeholder="Eski şifren">
-<input id="newPass" type="password" placeholder="Yeni şifren">
-<input id="newPass2" type="password" placeholder="Yeni şifren (tekrar)">
-<button class="btn-green" onclick="changePassword()">Şifreyi Güncelle</button>
-<button class="btn-gray" onclick="hideChangePass()">Vazgeç</button>
-<p class="small center" id="passMsg"></p>
+<div class="balance">
+<div><small>BAKİYEN</small><br><b id="balText">0.00 IQD</b></div>
+<button class="btn-dark" onclick="openTopup()">+ Yükle</button>
 </div>
+
+<div class="tabs" id="catTabs"></div>
+
+<div class="card">
+<h3 style="margin:0">🔥 Servisler - <span id="catTitle">Instagram</span></h3>
+<div id="serviceList"></div>
+</div>
+
+<div class="card">
+<h3 style="margin:0">🛒 Sipariş Ver</h3>
+<input id="selService" readonly>
+<input id="linkInput" placeholder="Link / @kullanıcı">
+<input id="qtyInput" type="number" value="1000" oninput="calc()">
+<p class="small" id="qtyInfo">1000 adet = 2.200 IQD</p>
+<input id="couponInput" placeholder="Kupon: RSX2K10">
+<button class="btn-full gray" onclick="applyCoupon()">Kupon Uygula</button>
+<p style="display:flex;justify-content:space-between">Toplam: <b id="totalText" style="color:#00e676">2.200 IQD</b></p>
+<h3>Ödeme</h3>
+<div id="payList"></div>
+<button class="btn-full wa" onclick="startOrder()">🚀 Sipariş Başlat</button>
+<button class="btn-full wa2" onclick="orderWhatsapp()">WhatsApp ile Sipariş Ver</button>
+<p class="small center" id="orderMsg"></p>
+</div>
+
+<div class="card">
+<h3 style="margin:0">🔍 Sipariş Takip</h3>
+<input id="trackCode" placeholder="Kod: RSX-1234">
+<button class="btn-full gray" onclick="trackOrder()">Sorgula</button>
+<p class="small" id="trackResult"></p>
+</div>
+
+<div class="card">
+<h3 style="margin:0">📦 Siparişlerim</h3>
+<div id="myOrders" class="small">Henüz sipariş yok.</div>
+</div>
+
+<a href="https://wa.me/9647512044863?text=Selam%20RSX2K%20destek" target="_blank" style="display:block;text-align:center;background:#00e676;color:#000;padding:13px;border-radius:12px;text-decoration:none;font-weight:900">💬 WhatsApp Destek - 0751 204 4863</a>
+<p class="small center">© 2026 RSX2K - Musul / Irak</p>
+</div>
+
+<div class="admin-bar"><button onclick="openAdmin()">👑 Yönetici Paneli</button></div>
 
 <!-- BAKİYE YÜKLE -->
-<div class="card" id="topupCard">
+<div id="topupModal" class="modal hidden">
+<div class="modal-box">
 <h3 class="center">Bakiye Yükle</h3>
-<p class="small center">Kart ile yükle, bakiyen hesabında kalsın.</p>
-<div class="row">
-<button class="btn-white" onclick="setTopup(100)">100 TL</button>
-<button class="btn-white" onclick="setTopup(250)">250 TL</button>
-<button class="btn-white" onclick="setTopup(500)">500 TL</button>
-</div>
-<input id="topupAmount" type="number" value="100">
-<button class="btn-green" onclick="topupStripe()">💳 Bakiye Yükle</button>
+<div class="row"><button class="btn-dark" onclick="setTopup(10000)">10.000 IQD</button><button class="btn-dark" onclick="setTopup(25000)">25.000 IQD</button><button class="btn-dark" onclick="setTopup(50000)">50.000 IQD</button></div>
+<input id="topupAmount" type="number" value="10000">
+<button class="btn-full wa" onclick="topupStripe()">💳 Kart ile Yükle (Stripe)</button>
+<button class="btn-full gray" onclick="closeTopup()">Kapat</button>
 <p class="small center" id="topupMsg"></p>
-<a class="wa-float" href="https://wa.me/9647512044863?text=Selam%20RSX2K%2C%20bakiye%20y%C3%BCklemek%20istiyorum">WhatsApp: +964 751 204 4863</a>
+</div>
+</div>
+
+<!-- ADMIN -->
+<div id="adminModal" class="modal hidden">
+<div class="modal-box">
+<div style="display:flex;justify-content:space-between;align-items:center"><h2 style="margin:0">👑 ADMIN</h2><button onclick="closeAdmin()" style="background:#ef4444;color:#fff;border:0;padding:8px 12px;border-radius:20px;cursor:pointer">X Kapat</button></div>
+<div id="adminLogin">
+<input id="adminPass" type="password" placeholder="Şifre: rsx2k123">
+<button class="btn-full wa" onclick="adminLogin()">Giriş Yap</button>
+<p class="small center">Şifreni değiştirmek için aşağıdan değiştir</p>
+</div>
+<div id="adminPanel" class="hidden">
+<div class="stats">
+<div class="stat"><b id="aOrders">0</b><small>Sipariş</small></div>
+<div class="stat"><b id="aCiro">0.00 USD</b><small>Ciro</small></div>
+<div class="stat"><b id="aBal">0.00 USD</b><small>Bakiye</small></div>
+</div>
+<div style="display:flex;gap:6px;margin:10px 0;flex-wrap:wrap">
+<button class="adm-tab on" onclick="admTab('orders',this)">📦 Siparişler</button>
+<button class="adm-tab" onclick="admTab('prices',this)">💰 Fiyatlar</button>
+<button class="adm-tab" onclick="admTab('balance',this)">💳 Bakiye</button>
+<button class="adm-tab" onclick="admTab('coupon',this)">🎟️ Kupon</button>
+<button class="adm-tab" onclick="admTab('pass',this)">🔑 Şifre</button>
+</div>
+<div id="admOrders"><input placeholder="Kod ara" oninput="filterOrders(this.value)"><div id="admOrderList" class="small">Sipariş yok.</div><button class="btn-full gray" onclick="clearOrders()">Tümünü Temizle</button></div>
+<div id="admPrices" class="hidden"><div id="priceEdit"></div><button class="btn-full wa" onclick="savePrices()">Kaydet</button></div>
+<div id="admBalance" class="hidden"><p>Bakiye: <b id="admBalText"></b></p><input id="balAdd" type="number" value="20" placeholder="Miktar"><button class="btn-full wa" onclick="addBalance()">+ Ekle</button><button class="btn-full gray" onclick="resetBalance()">Sıfırla</button></div>
+<div id="admCoupon" class="hidden"><p>Mevcut: <span id="couponNow"></span></p><input id="newCoupon" placeholder="Yeni Kod"><input id="newCouponPer" type="number" value="20"><button class="btn-full wa" onclick="saveCoupon()">Kaydet</button></div>
+<div id="admPass" class="hidden"><input id="oldAdminPass" type="password" placeholder="Eski şifre"><input id="newAdminPass" type="password" placeholder="Yeni şifre"><input id="newAdminPass2" type="password" placeholder="Yeni şifre tekrar"><button class="btn-full wa" onclick="changeAdminPass()">Şifreyi Değiştir</button><p class="small center" id="adminPassMsg"></p></div>
+</div>
+</div>
 </div>
 
 <script>
-// ============ AYARLAR ============
-// Cloudflare Worker linkini buraya yaz
-const WORKER_URL = "https://rsx2k-sitem.workers.dev";
-const WA_NUMBER = "9647512044863";
+const WORKER_URL = "https://rapid-pine-af51.zeroxturksoy.workers.dev";
+const WA = "9647512044863";
+let cur = "IQD";
+let couponPer = 10;
+let couponCode = "RSX2K10";
+let couponApplied = false;
 
-// ============ KULLANICI + BAKİYE - DÜZELTİLDİ ============
-function getUsers(){ try{ return JSON.parse(localStorage.getItem("rsx_users")||"{}"); }catch(e){ return {}; } }
-function saveUsers(u){ localStorage.setItem("rsx_users", JSON.stringify(u)); }
-function getBalances(){ try{ return JSON.parse(localStorage.getItem("rsx_balances")||"{}"); }catch(e){ return {}; } }
-function saveBalances(b){ localStorage.setItem("rsx_balances", JSON.stringify(b)); }
-function currentUser(){ return localStorage.getItem("rsx_current"); }
+// Fiyatlar - IQD / 1000 adet - VİDEODAKİ GİBİ
+let PRICES = {
+ "Instagram Takipçi - Garantili": 2200,
+ "Instagram Takipçi - Ekonomik": 1500,
+ "Instagram Beğeni": 600,
+ "Instagram İzlenme - Reels": 300,
+ "TikTok Takipçi": 1800,
+ "TikTok Beğeni": 500,
+ "TikTok İzlenme": 150,
+ "YouTube Abone": 5000,
+ "YouTube İzlenme": 3000,
+ "Facebook Sayfa Beğeni": 2000,
+ "Facebook Takipçi": 2200,
+ "Telegram Üye - Kanal": 1500,
+};
+const CATS = {
+ "Instagram": ["Instagram Takipçi - Garantili","Instagram Takipçi - Ekonomik","Instagram Beğeni","Instagram İzlenme - Reels"],
+ "TikTok": ["TikTok Takipçi","TikTok Beğeni","TikTok İzlenme"],
+ "YouTube": ["YouTube Abone","YouTube İzlenme"],
+ "Facebook": ["Facebook Sayfa Beğeni","Facebook Takipçi"],
+ "Telegram": ["Telegram Üye - Kanal"],
+};
+const DESCS = {
+ "Instagram Takipçi - Garantili":"0-10 dk",
+ "Instagram Takipçi - Ekonomik":"En Ucuz",
+ "Instagram Beğeni":"Anında",
+ "Instagram İzlenme - Reels":"Keşfet",
+ "TikTok Takipçi":"Hızlı",
+ "TikTok Beğeni":"Anında",
+ "TikTok İzlenme":"Keşfet",
+ "YouTube Abone":"Gerçek",
+ "YouTube İzlenme":"Para Kazanma",
+ "Facebook Sayfa Beğeni":"Gerçek",
+ "Facebook Takipçi":"Hızlı",
+ "Telegram Üye - Kanal":"Gerçek",
+};
+let currentCat = "Instagram";
+let selectedService = "Instagram Takipçi - Garantili";
+let selectedPay = "Kart - Stripe";
 
-function getBalance(user){
-  const b = getBalances();
-  if(b[user] === undefined) b[user] = 0;
-  return b[user];
+function rate(){ if(cur==="IQD") return 1; if(cur==="TRY") return 0.029; return 0.00076; }
+function fmt(v){ if(cur==="IQD") return v.toLocaleString("tr-TR",{minimumFractionDigits:0})+" IQD"; if(cur==="TRY") return (v*0.029).toFixed(2)+" TRY"; return (v*0.00076).toFixed(2)+" USD"; }
+function loadSaved(){
+  try{
+    const p = JSON.parse(localStorage.getItem("rsx_prices")||"null"); if(p) PRICES = p;
+    const c = JSON.parse(localStorage.getItem("rsx_coupon")||"null"); if(c){ couponCode=c.code; couponPer=c.per; }
+    const ap = localStorage.getItem("rsx_admin_pass"); if(ap) ADMIN_PASS = ap;
+  }catch(e){}
 }
-function setBalance(user, val){
-  const b = getBalances();
-  b[user] = val;
-  saveBalances(b);
-  updateUI();
+let ADMIN_PASS = "rsx2k123";
+loadSaved();
+function getBal(){ return Number(localStorage.getItem("rsx_balance")||0); }
+function setBal(v){ localStorage.setItem("rsx_balance", String(v)); updateBal(); }
+function updateBal(){ document.getElementById("balText").innerText = fmt(getBal()); document.getElementById("aBal").innerText = fmt(getBal()); document.getElementById("admBalText").innerText = fmt(getBal()); }
+function getOrders(){ try{ return JSON.parse(localStorage.getItem("rsx_orders")||"[]"); }catch(e){ return []; } }
+function saveOrders(o){ localStorage.setItem("rsx_orders", JSON.stringify(o)); renderOrders(); }
+
+function renderCats(){
+  const tabs = document.getElementById("catTabs");
+  tabs.innerHTML = "";
+  Object.keys(CATS).forEach(c=>{
+    const b = document.createElement("button");
+    b.className = "tab"+(c===currentCat?" on":"");
+    b.innerText = {"Instagram":"📸 Instagram","TikTok":"🎵 TikTok","YouTube":"▶️ YouTube","Facebook":"👍 Facebook","Telegram":"✈️ Telegram"}[c]||c;
+    b.onclick = ()=>{ currentCat=c; selectedService=CATS[c][0]; renderCats(); renderServices(); calc(); };
+    tabs.appendChild(b);
+  });
+  document.getElementById("catTitle").innerText = currentCat;
 }
-function updateUI(){
-  const u = currentUser();
-  if(!u) return;
-  document.getElementById("balanceText").innerText = getBalance(u) + " TL";
-  document.getElementById("helloUser").innerText = u;
-  document.getElementById("userTop").innerHTML = "<span class='badge'>"+getBalance(u)+" TL</span>";
+function renderServices(){
+  const list = document.getElementById("serviceList"); list.innerHTML="";
+  CATS[currentCat].forEach(s=>{
+    const d = document.createElement("div");
+    d.className = "service"+(s===selectedService?" sel":"");
+    d.innerHTML = `<div><b>${s}</b><small>${DESCS[s]||""}</small></div><b>${fmt(PRICES[s])} /1000</b>`;
+    d.onclick = ()=>{ selectedService=s; renderServices(); document.getElementById("selService").value=s; calc(); };
+    list.appendChild(d);
+  });
+  document.getElementById("selService").value = selectedService;
 }
-function register(){
-  const u = document.getElementById("authUser").value.trim();
-  const p = document.getElementById("authPass").value;
-  if(!u || !p) return document.getElementById("authMsg").innerText = "Kullanıcı adı ve şifre yaz kanka.";
-  const users = getUsers();
-  if(users[u]) return document.getElementById("authMsg").innerText = "Bu kullanıcı zaten var, giriş yap.";
-  users[u] = p;
-  saveUsers(users);
-  const b = getBalances(); if(b[u]===undefined){ b[u]=0; saveBalances(b); }
-  document.getElementById("authMsg").innerText = "Kayıt oldun ✅ Şimdi giriş yap.";
+function renderPays(){
+  const pays = ["Kart - Stripe|Mastercard • Visa • Troy","Papara|WhatsApp ile","Havale / EFT|WhatsApp ile","Zain Cash|WhatsApp ile"];
+  const el = document.getElementById("payList"); el.innerHTML="";
+  pays.forEach(p=>{
+    const [name,desc] = p.split("|");
+    const d = document.createElement("div");
+    d.className = "pay"+(selectedPay===name?" sel":"");
+    d.innerHTML = `<div><b>${name}</b><br><small>${desc}</small></div><div class="dot"></div>`;
+    d.onclick = ()=>{ selectedPay=name; renderPays(); };
+    el.appendChild(d);
+  });
 }
-function login(){
-  const u = document.getElementById("authUser").value.trim();
-  const p = document.getElementById("authPass").value;
-  const users = getUsers();
-  if(users[u] && users[u] === p){
-    localStorage.setItem("rsx_current", u);
-    showPanel();
+function calc(){
+  const qty = Number(document.getElementById("qtyInput").value||0);
+  let total = PRICES[selectedService] * qty / 1000;
+  if(couponApplied) total = total * (1 - couponPer/100);
+  document.getElementById("qtyInfo").innerText = `${qty.toLocaleString("tr-TR")} adet = ${fmt(PRICES[selectedService]*qty/1000)}`;
+  document.getElementById("totalText").innerText = fmt(total);
+  return total;
+}
+function setCur(c){
+  cur=c;
+  ["IQD","TRY","USD"].forEach(x=>document.getElementById("btn"+x).className = x===c?"on":"");
+  renderServices(); updateBal(); calc(); renderOrders(); updateAdminStats();
+}
+function applyCoupon(){
+  const v = document.getElementById("couponInput").value.trim().toUpperCase();
+  if(v === couponCode){ couponApplied=true; document.getElementById("orderMsg").innerText = `Kupon uygulandı ✅ %${couponPer} indirim`; }
+  else { couponApplied=false; document.getElementById("orderMsg").innerText = "Kupon geçersiz"; }
+  calc();
+}
+async function startOrder(){
+  const link = document.getElementById("linkInput").value.trim();
+  const qty = Number(document.getElementById("qtyInput").value||0);
+  const totalIQD = PRICES[selectedService]*qty/1000 * (couponApplied? (1-couponPer/100):1);
+  if(!link) return document.getElementById("orderMsg").innerText = "Link / @kullanıcı yaz kanka.";
+  if(qty<10) return document.getElementById("orderMsg").innerText = "Adet en az 10 olmalı.";
+  const code = "RSX-"+Math.floor(1000+Math.random()*9000);
+  const orders = getOrders();
+  orders.unshift({code, service:selectedService, link, qty, total:totalIQD, pay:selectedPay, status:"Bekliyor", date:new Date().toLocaleString("tr-TR")});
+  saveOrders(orders);
+  document.getElementById("orderMsg").innerText = `Sipariş oluşturuldu ✅ Kodun: ${code}`;
+  if(selectedPay==="Kart - Stripe"){
+    document.getElementById("orderMsg").innerText = "Stripe ödeme sayfası açılıyor...";
+    try{
+      const res = await fetch(WORKER_URL+"/create-checkout-session",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({amount: Math.round(totalIQD*0.00076*100)/100, currency:"usd", name: selectedService+" - "+code})});
+      const data = await res.json();
+      if(data.url){ window.location.href=data.url; return; }
+      document.getElementById("orderMsg").innerText = "Stripe hatası, WhatsApp ile devam et. Kodun: "+code;
+    }catch(e){ document.getElementById("orderMsg").innerText = "Bağlantı hatası, WhatsApp ile dene. Kodun: "+code; }
   } else {
-    document.getElementById("authMsg").innerText = "Kullanıcı adı veya şifre yanlış.";
+    orderWhatsapp();
   }
 }
-function showPanel(){
-  document.getElementById("authCard").classList.add("hidden");
-  document.getElementById("panelCard").classList.remove("hidden");
-  updateUI();
+function orderWhatsapp(){
+  const link = document.getElementById("linkInput").value||"";
+  const qty = document.getElementById("qtyInput").value||"";
+  const total = document.getElementById("totalText").innerText;
+  const msg = encodeURIComponent(`Merhaba RSX2K! Sipariş: ${selectedService} | Link: ${link} | Adet: ${qty} | Toplam: ${total} | Ödeme: ${selectedPay}`);
+  window.open(`https://wa.me/${WA}?text=${msg}`,"_blank");
 }
-function logout(){ localStorage.removeItem("rsx_current"); location.reload(); }
-if(currentUser() && getUsers()[currentUser()]){ showPanel(); }
-
-// ============ ŞİFRE DEĞİŞTİR - DÜZELTİLDİ ============
-function showChangePass(){ document.getElementById("passCard").classList.remove("hidden"); window.scrollTo(0, document.body.scrollHeight); }
-function hideChangePass(){ document.getElementById("passCard").classList.add("hidden"); }
-function changePassword(){
-  const u = currentUser();
-  const oldP = document.getElementById("oldPass").value;
-  const newP = document.getElementById("newPass").value;
-  const newP2 = document.getElementById("newPass2").value;
-  const users = getUsers();
-  if(!u) return document.getElementById("passMsg").innerText = "Önce giriş yap.";
-  if(users[u] !== oldP) return document.getElementById("passMsg").innerText = "Eski şifren yanlış kanka.";
-  if(!newP || newP.length < 4) return document.getElementById("passMsg").innerText = "Yeni şifre en az 4 karakter olsun.";
-  if(newP !== newP2) return document.getElementById("passMsg").innerText = "Yeni şifreler uyuşmuyor.";
-  if(newP === oldP) return document.getElementById("passMsg").innerText = "Yeni şifre eskisiyle aynı olamaz.";
-  users[u] = newP;
-  saveUsers(users);
-  document.getElementById("passMsg").innerText = "Şifren değişti ✅ Artık yeni şifrenle giriş yapacaksın.";
-  document.getElementById("oldPass").value=""; document.getElementById("newPass").value=""; document.getElementById("newPass2").value="";
+function trackOrder(){
+  const code = document.getElementById("trackCode").value.trim().toUpperCase();
+  const o = getOrders().find(x=>x.code===code);
+  document.getElementById("trackResult").innerText = o ? `${o.code} - ${o.service} - ${o.status} - ${fmt(o.total)}` : "Sipariş bulunamadı.";
 }
-
-// ============ ÖDEME ============
-document.getElementById("amount").addEventListener("input", e=>{
-  document.getElementById("totalText").innerText = (e.target.value||0) + " TL";
-});
-function setTopup(v){ document.getElementById("topupAmount").value = v; }
-
-async function payWithStripe(){
-  const u = currentUser();
-  const target = document.getElementById("targetUser").value.trim();
-  const amount = Number(document.getElementById("amount").value || 0);
-  const platform = document.getElementById("platform").value;
-  if(!u) return document.getElementById("orderMsg").innerText = "Önce giriş yap.";
-  if(!target) return document.getElementById("orderMsg").innerText = "Hedef kullanıcı adını yaz.";
-  if(amount < 1) return document.getElementById("orderMsg").innerText = "Adet yaz.";
-  document.getElementById("orderMsg").innerText = "Ödeme sayfası açılıyor...";
-  try{
-    const res = await fetch(WORKER_URL + "/create-checkout-session", {
-      method: "POST",
-      headers: {"Content-Type":"application/json"},
-      body: JSON.stringify({ amount: amount, username: target + " - " + platform })
-    });
-    const data = await res.json();
-    if(data.url){ window.location.href = data.url; }
-    else { document.getElementById("orderMsg").innerText = "Stripe hatası: " + (data.error || JSON.stringify(data)); }
-  }catch(e){ document.getElementById("orderMsg").innerText = "Bağlantı hatası, WhatsApp ile dene."; }
+function renderOrders(){
+  const list = getOrders();
+  document.getElementById("statOrder").innerText = list.length;
+  document.getElementById("myOrders").innerHTML = list.length? list.slice(0,5).map(o=>`<div style="padding:8px 0;border-bottom:1px solid #1e293b"><b>${o.code}</b> - ${o.service}<br><small>${o.qty} adet • ${fmt(o.total)} • ${o.status}</small></div>`).join("") : "Henüz sipariş yok.";
+  updateAdminStats();
 }
+function openTopup(){ document.getElementById("topupModal").classList.remove("hidden"); }
+function closeTopup(){ document.getElementById("topupModal").classList.add("hidden"); }
+function setTopup(v){ document.getElementById("topupAmount").value=v; }
 async function topupStripe(){
-  const amount = Number(document.getElementById("topupAmount").value || 0);
-  const u = currentUser() || "misafir";
-  if(amount < 10) return document.getElementById("topupMsg").innerText = "En az 10 TL yükleyebilirsin.";
-  document.getElementById("topupMsg").innerText = "Ödeme sayfası açılıyor...";
+  const amountIQD = Number(document.getElementById("topupAmount").value||0);
+  if(amountIQD<1000) return document.getElementById("topupMsg").innerText = "En az 1000 IQD yükleyebilirsin.";
+  const usd = amountIQD*0.00076;
+  document.getElementById("topupMsg").innerText = "Ödeme açılıyor...";
   try{
-    const res = await fetch(WORKER_URL + "/create-checkout-session", {
-      method: "POST",
-      headers: {"Content-Type":"application/json"},
-      body: JSON.stringify({ amount: amount, username: "Bakiye Yükle - " + u })
-    });
+    const res = await fetch(WORKER_URL+"/create-checkout-session",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({amount: usd, currency:"usd", name:"Bakiye Yükle - "+amountIQD+" IQD"})});
     const data = await res.json();
-    if(data.url){ window.location.href = data.url; }
-    else { document.getElementById("topupMsg").innerText = "Stripe hatası: " + (data.error || "Bilinmeyen hata"); }
+    if(data.url) window.location.href=data.url;
+    else document.getElementById("topupMsg").innerText = "Stripe hatası: "+(data.error||"Bilinmeyen");
   }catch(e){ document.getElementById("topupMsg").innerText = "Bağlantı hatası."; }
 }
-function orderWhatsapp(){
-  const target = document.getElementById("targetUser").value || "";
-  const amount = document.getElementById("amount").value || "";
-  const platform = document.getElementById("platform").value;
-  const msg = encodeURIComponent("Merhaba RSX2K! Sipariş: " + platform + " | Hedef: " + target + " | Adet: " + amount);
-  window.open("https://wa.me/" + WA_NUMBER + "?text=" + msg, "_blank");
+function openAdmin(){ document.getElementById("adminModal").classList.remove("hidden"); }
+function closeAdmin(){ document.getElementById("adminModal").classList.add("hidden"); }
+function adminLogin(){
+  if(document.getElementById("adminPass").value===ADMIN_PASS){
+    document.getElementById("adminLogin").classList.add("hidden");
+    document.getElementById("adminPanel").classList.remove("hidden");
+    updateAdminStats(); renderAdmOrders(); renderPriceEdit();
+    document.getElementById("couponNow").innerText = `${couponCode} - %${couponPer}`;
+  } else alert("Şifre yanlış");
 }
-</script>
-</body>
-</html>
+function updateAdminStats(){
+  const orders = getOrders();
+  document.getElementById("aOrders").innerText = orders.length;
+  const ciro = orders.reduce((a,o)=>a+o.total,0);
+  document.getElementById("aCiro").innerText = fmt(ciro);
+  document.getElementById("aBal").innerText = fmt(getBal());
+}
+function admTab(tab,btn){
+  document.querySelectorAll(".adm-tab").forEach(b=>b.classList.remove("on")); btn.classList.add("on");
+  ["orders","prices","balance","coupon","pass"].forEach(t=>document.getElementById("adm"+t.charAt(0).toUpperCase()+t.slice(1)).classList.toggle("hidden", t!==tab));
+}
+function renderAdmOrders(){
+  const orders = getOrders();
+  document.getElementById("admO
